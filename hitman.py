@@ -3,8 +3,8 @@ import random
 
 class Hitman:
     def __init__(self, name="Unknown Hitman", has_magic=False):
-        self._health = 200
-        self._has_magic = has_magic
+        self.__health = 200
+        self.__has_magic = has_magic
         self.__name = name
 
     # getter
@@ -15,27 +15,27 @@ class Hitman:
     # getter
     @property
     def health(self):
-        if self._has_magic:
-            self._health = self._health * 2 + 1
-        return self._health
+        if self.__has_magic:
+            self.__health = self.__health * 2 + 1
+        return self.__health
 
     # setter
     @health.setter
     def health(self, value):
-        self._health = value
+        self.__health = value
         
     @property
     def is_alive(self):
-        if self._health > 0:
+        if self.__health > 0:
             return True
         else:
             return False
         
     def hit(self):
         random_hit = random.randint(10, 30)
-        if self._has_magic and self._health % 5 == 0:
-            self._health += 20
+        if self.__has_magic and self.__health % 5 == 0:
+            self.__health += 20
             print('magic hitman health boost 20')
-        self._health -= random_hit
-        print("the hitman got hit -" + str(random_hit) + " " + self.name + "'s remaininig health = " + str(self._health))
+        self.__health -= random_hit
+        print("the hitman got hit -" + str(random_hit) + " " + self.name + "'s remaininig health = " + str(self.__health))
 
